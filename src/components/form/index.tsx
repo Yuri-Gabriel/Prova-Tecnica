@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 import React from "react";
 
@@ -10,7 +11,29 @@ import {
     ButtonSubmit
 } from './style';
 
-export default class Form extends React.Component {
+interface Product {
+    title: string,
+    description: string,
+    price: number,
+    isSale: boolean
+}
+
+interface FormProps {
+    
+}
+
+interface FormState {
+    products: Product[]
+}
+
+export default class Form extends React.Component<FormProps, FormState> {
+    constructor(props: FormProps) {
+        super(props)
+
+        this.setState({
+            products: []
+        })
+    }
     render(): React.ReactNode {
         return (
             <FormContainer>
@@ -33,7 +56,9 @@ export default class Form extends React.Component {
                             type="number"
                         />
                     </InputContainer>
-                    <InputContainer>
+                    <InputContainer style={{
+                        flexDirection: "row"
+                    }}>
                         <LabelInput>Está a venda?</LabelInput>
                         <InputValue 
                             type="checkbox"
