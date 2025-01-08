@@ -5,12 +5,9 @@ import Form from "@/app/components/form";
 import { useState  } from "react";
 import List from "@/app/components/list"
 
-interface Product {
-  title: string,
-  description: string,
-  price: number,
-  isSale: boolean
-}
+import {
+  Product
+} from "./types";
 
 export default function Home() {
 
@@ -22,9 +19,18 @@ export default function Home() {
       <List 
         registerProduct={registerProduct} 
         setRegisterProduct={setRegisterProduct}
+
+        productList={productList}
+        setProductList={setProductList}
       />
       {
-        registerProduct && <Form />
+        registerProduct && <Form 
+          registerProduct={registerProduct} 
+          setRegisterProduct={setRegisterProduct}
+
+          productList={productList}
+          setProductList={setProductList}
+        />
       }
     </main>
   );

@@ -11,29 +11,16 @@ import {
     ButtonSubmit
 } from './style';
 
-interface Product {
-    title: string,
-    description: string,
-    price: number,
-    isSale: boolean
-}
-
-interface FormProps { }
-
-interface FormState {
-    products: Product[]
-
-    title: string,
-    description: string,
-    price: number,
-    isSale: boolean
-}
+import {
+    FormProps,
+    FormState,
+    Product
+} from "../../types";
 
 export default class Form extends React.Component<FormProps, FormState> {
     constructor(props: FormProps) {
         super(props)
         this.state = {
-            products: [],
             title: "",
             description: "",
             price: 0,
@@ -46,18 +33,15 @@ export default class Form extends React.Component<FormProps, FormState> {
             alert("Ausencia de dados");
             return;
         }
-
-        const currentProductList: Product[] = this.state.products;
-        currentProductList.push({
+        const currentList: Product[] = this.props.productList
+        currentList.push({
             title: this.state.title,
             description: this.state.description,
             price: this.state.price,
             isSale: this.state.isSale
         });
-        this.setState({
-            products: currentProductList
-        })
-        console.log(this.state.products)
+        this.props.setProductList(currentList);
+        this.props.setRegisterProduct(false);
     }
 
     render(): React.ReactNode {
