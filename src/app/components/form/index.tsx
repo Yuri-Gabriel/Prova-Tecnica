@@ -2,6 +2,9 @@
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 import React from "react";
 
+import Image from "next/image";
+import CloseIMG from "../../../../public/close.svg"
+
 import {
     FormContainer,
     FormBody,
@@ -42,96 +45,135 @@ export default class Form extends React.Component<FormProps, FormState> {
         });
         this.props.setProductList(currentList);
         this.props.setRegisterProduct(false);
+        console.log(this.props.productList)
     }
 
     render(): React.ReactNode {
         return (
-            <FormContainer>
-                <FormBody>
-                    <InputContainer>
-                        <LabelInput>Titulo</LabelInput>
-                        <InputValue 
-                            type="text"
-                            required
-                            value={this.state.title}
-                            onChange={(event) => {
-                                const value: string= event.target.value
-                                this.setState({
-                                    title: value
-                                })
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer>
-                        <LabelInput>Descrição</LabelInput>
-                        <InputValue 
-                            type="text"
-                            required
-                            value={this.state.description}
-                            onChange={(event) => {
-                                const value: string= event.target.value
-                                this.setState({
-                                    description: value
-                                })
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer>
-                        <LabelInput>Preço</LabelInput>
-                        <InputValue 
-                            type="number"
-                            required
-                            value={this.state.price}
-                            onChange={(event) => {
-                                const value: number = Number(event.target.value)
-                                this.setState({
-                                    price: value
-                                })
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer style={{
-                        flexDirection: "row"
-                    }}>
-                        <LabelInput>Está a venda?</LabelInput>
-                        <div>
-                            <LabelInput>
-                                Sim
-                            </LabelInput>
-                            <InputValue 
-                                name="sale"
-                                type="radio"
-                            />
-                            <LabelInput
-                                style={{
-                                    marginLeft: 10
-                                }}
-                            >
-                                Não
-                            </LabelInput>
-                            <InputValue 
-                                name="sale"
-                                type="radio"
-                                defaultChecked
-                            />
-                        </div>
-                    </InputContainer>
-                    <InputContainer 
+            <section style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                
+
+                width: "100vw",
+                height: "100vh",
+
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <FormContainer>
+                    <Image
                         style={{
-                            boxShadow: "none"
+                            cursor: "pointer",
+                            alignSelf: "flex-end",
+                            marginBottom: 20,
+                            marginRight: 30
                         }}
-                    >
-                        <ButtonSubmit
-                            onClick={(e) => {
-                                e.preventDefault() // Faz com que a pagina não fique atualizando ao clicar no botão
-                                this.addProduct()
+                        src={CloseIMG}
+                        alt="close icon"
+                        onClick={() => {
+                            this.props.setRegisterProduct(false);
+                        }}
+                    />
+                    <FormBody>
+                        <InputContainer>
+                            <LabelInput>Titulo</LabelInput>
+                            <InputValue 
+                                type="text"
+                                required
+                                value={this.state.title}
+                                onChange={(event) => {
+                                    const value: string= event.target.value
+                                    this.setState({
+                                        title: value
+                                    })
+                                }}
+                            />
+                        </InputContainer>
+                        <InputContainer>
+                            <LabelInput>Descrição</LabelInput>
+                            <InputValue 
+                                type="text"
+                                required
+                                value={this.state.description}
+                                onChange={(event) => {
+                                    const value: string= event.target.value
+                                    this.setState({
+                                        description: value
+                                    })
+                                }}
+                            />
+                        </InputContainer>
+                        <InputContainer>
+                            <LabelInput>Preço</LabelInput>
+                            <InputValue 
+                                type="number"
+                                required
+                                value={this.state.price}
+                                onChange={(event) => {
+                                    const value: number = Number(event.target.value)
+                                    this.setState({
+                                        price: value
+                                    })
+                                }}
+                            />
+                        </InputContainer>
+                        <InputContainer style={{
+                            flexDirection: "row"
+                        }}>
+                            <LabelInput>Está a venda?</LabelInput>
+                            <div>
+                                <LabelInput>
+                                    Sim
+                                </LabelInput>
+                                <InputValue 
+                                    name="sale"
+                                    type="radio"
+                                    onClick={() => {
+                                        this.setState({
+                                            isSale: true
+                                        })
+                                    }}
+                                />
+                                <LabelInput
+                                    style={{
+                                        marginLeft: 10
+                                    }}
+                                >
+                                    Não
+                                </LabelInput>
+                                <InputValue 
+                                    name="sale"
+                                    type="radio"
+                                    defaultChecked
+                                    onClick={() => {
+                                        this.setState({
+                                            isSale: false
+                                        })
+                                    }}
+                                />
+                            </div>
+                        </InputContainer>
+                        <InputContainer 
+                            style={{
+                                boxShadow: "none"
                             }}
                         >
-                            Cadastrar
-                        </ButtonSubmit>
-                    </InputContainer>
-                </FormBody>
-            </FormContainer>
+                            <ButtonSubmit
+                                onClick={(e) => {
+                                    e.preventDefault() // Faz com que a pagina não fique atualizando ao clicar no botão
+                                    this.addProduct()
+                                }}
+                            >
+                                Cadastrar
+                            </ButtonSubmit>
+                        </InputContainer>
+                    </FormBody>
+                </FormContainer>
+            </section>
+            
         );
     }
 }

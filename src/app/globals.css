@@ -11,7 +11,7 @@ html, body {
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(to bottom, red, blue);
+  background-color: #4c4c52;
 
   font-family: Arial, Helvetica, sans-serif;
 }

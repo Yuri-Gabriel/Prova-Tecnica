@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.section`
+export const FormContainer = styled.div`
     border-radius: 20px;
 
     height: 500px;
     width: 650px;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
@@ -28,6 +28,7 @@ export const FormBody = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
     flex-direction: column;
 
     box-shadow: inset 1px 1px 5px black;
