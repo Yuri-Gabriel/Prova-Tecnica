@@ -23,7 +23,8 @@ export const ButtonAdd = styled.button`
 `;
 
 export const ListTable = styled.table`
-    width: 500px;
+    width: 90vw;
+    max-width: 500px;
 
     & * {
         border: 1px solid #FFFFFF;
