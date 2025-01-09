@@ -42,28 +42,31 @@ export default class List extends React.Component<ListProps, ListState> {
                             Cadastrar novo produto
                         </ButtonAdd>
                     </div>
-                    <ListTable>
-                        <ListHead>
-                            <ListRow>
-                                <th>Titulo</th>
-                                <th>Descrição</th>
-                                <th>Preço</th>
-                                <th>Está a venda?</th>
-                            </ListRow>
-                        </ListHead>
-                        <ListBody>
-                            {
-                                this.props.productList.map((product, key) => (
-                                    <ListRow key={key}>
-                                        <ListData>{product.title}</ListData>
-                                        <ListData>{product.description}</ListData>
-                                        <ListData>{`R$${product.price},00`}</ListData>
-                                        <ListData>{product.isSale ? "sim" : "não"}</ListData>
-                                    </ListRow>
-                                ))
-                            }
-                        </ListBody>
-                    </ListTable>
+                    {
+                        this.props.productList.length > 0 &&
+                        <ListTable>
+                            <ListHead>
+                                <ListRow>
+                                    <th>Titulo</th>
+                                    <th>Descrição</th>
+                                    <th>Preço</th>
+                                    <th>Está a venda?</th>
+                                </ListRow>
+                            </ListHead>
+                            <ListBody>
+                                {
+                                    this.props.productList.map((product, key) => (
+                                        <ListRow key={key}>
+                                            <ListData>{product.title}</ListData>
+                                            <ListData>{product.description}</ListData>
+                                            <ListData>{`R$${product.price},00`}</ListData>
+                                            <ListData>{product.isSale ? "sim" : "não"}</ListData>
+                                        </ListRow>
+                                    ))
+                                }
+                            </ListBody>
+                        </ListTable>
+                    }
                 </ListContainer>
             </section>
             

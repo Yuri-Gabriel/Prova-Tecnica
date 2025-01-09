@@ -12,24 +12,7 @@ import {
 export default function Home() {
 
   const [ registerProduct, setRegisterProduct ] = useState<boolean>(false);
-  const [ productList, setProductList ] = useState<Product[]>([{
-    title: "teste1",
-    description: "testeghgggggggggggggggg",
-    price: 2,
-    isSale: false
-  },
-  {
-    title: "teste2",
-    description: "teste",
-    price: 2,
-    isSale: false
-  },
-  {
-    title: "teste3",
-    description: "teste",
-    price: 2,
-    isSale: false
-  }]);
+  const [ productList, setProductList ] = useState<Product[]>([]);
 
   return (
     <main>
