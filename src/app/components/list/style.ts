@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.div`
-    width: 500px;
+    width: 90vw;
+    max-width: 500px;
     & > div {
         padding: 10px;
+    }
+
+    @media (min-width: 768px) {
+        width: 500px;
     }
 `;
 
 export const ButtonAdd = styled.button`
     display: block;
-    width: 480px;
+    width: 100%;
     margin: auto;
     padding: 10px 0px;
     border-radius: 10px;
